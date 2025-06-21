@@ -1,41 +1,48 @@
-TIMEMAP:
+1. Research Phase
+Initially, I explored Vision Transformers by watching several tutorials on YouTube and reading relevant articles, as I had recently completed a related task. However, I soon realized that the dataset I was working with was too small to effectively train an image classification model using transformer-based architectures. As a result, I shifted my focus to Convolutional Neural Networks (CNNs) and decided to design a custom CNN model tailored for image classification tasks.
 
-1) Research: I watched a lot of videos on youtube and read about vision transofrmers first since i had just completed a task prior to it,but soon i found out that the dataset would be too small to perform image classification using image transformers. Then I started learning about CNN's and settled on making a custom CNN to perform image classification.
+2. Execution Phase
+Initial Model Development:
 
-2) Execution:
+I began with a basic CNN architecture consisting of a single convolutional layer followed by a dense layer.
 
-I started with a simple CNN model that had just one convolutional layer and one dense layer.
-As I progressed, I expanded the architecture by adding more convolutional layers with increasing filters (32, 64, and 128) to capture more complex patterns from the images.
-After each convolutional layer, I added batch normalization to stabilize and speed up the training process.
-I also added MaxPooling layers after each convolutional block to reduce the spatial dimensions of the data while retaining important features.
-Dense Layers and Dropout.
+Gradually, I expanded the model by adding multiple convolutional layers with increasing filter sizes (32, 64, and 128) to capture more complex and hierarchical features from the input images.
 
-I introduced additional fully connected dense layers (e.g., with 256 and 512 units) after flattening the convolutional layers, using ReLU activation.
-To combat overfitting, I added dropout layers, using a dropout rate of 0.5 to randomly drop connections during training and improve generalization.
-Regularization:
+Batch Normalization was incorporated after each convolutional layer to enhance training stability and accelerate convergence.
 
-I added L2 regularization to the dense layers to penalize large weights and help the model generalize better.
-I experimented with different regularization strengths, adjusting it from 0.01 to 0.001.
-Optimizer Customization:
+MaxPooling layers were added after each convolutional block to reduce spatial dimensions while preserving significant features.
 
-I modified the Adam optimizer by setting a custom learning rate (e.g., 0.0001) to better control the learning speed and improve convergence.
+Fully Connected Layers and Dropout:
+
+After flattening the output from the convolutional layers, I added fully connected dense layers with 256 and 512 units, using the ReLU activation function.
+
+To mitigate overfitting, I implemented dropout layers with a dropout rate of 0.5, which randomly deactivates connections during training to enhance generalization.
+
+Regularization Techniques:
+
+L2 regularization was applied to the dense layers to discourage large weight magnitudes and improve the model's ability to generalize.
+
+I experimented with different regularization strengths, adjusting the regularization factor from 0.01 to 0.001.
+
+Optimizer Configuration:
+
+The Adam optimizer was used with a custom learning rate (e.g., 0.0001) to fine-tune the training process and improve convergence behavior.
 
 Model Compilation:
 
-I kept using sparse_categorical_crossentropy for multi-class classification and accuracy as the evaluation metric.
-Pre-trained Model Integration:
+The model was compiled using the sparse_categorical_crossentropy loss function, suitable for multi-class classification, with accuracy as the primary evaluation metric.
 
-I experimented with various image augmentation techniques to generate more training data, given the relatively small size of my dataset.
-I used Augmentor to apply rotations, flips, zooming, and random distortions.
-Later in the process, I applied more extreme augmentation techniques, such as blurring and random erasing, to improve the model’s robustness to variations in the input data.
+Data Augmentation and Pre-trained Model Exploration:
+
+To address the challenge of a limited dataset, I applied various image augmentation techniques using the Augmentor library. These included rotations, flips, zooming, and random distortions.
+
+In later stages, I experimented with more aggressive augmentations such as blurring and random erasing to further improve the model’s robustness to input variability.
 
 Training and Validation Setup:
 
-I tried different train-validation splits before finally settling on an 80/20 split.
-I also generated additional data through augmentation to reduce overfitting and improve my model’s overall performance.
+Multiple training-validation split ratios were tested before finalizing an 80/20 split.
 
+Augmented data was used during training to increase data diversity, reduce overfitting, and enhance model performance.
 
-3)Conclusion:
-
-
-I created a model that is very close to mobilenet and beats resnet 50 in its accuracy.
+3. Conclusion
+Through iterative refinement and experimentation, I developed a custom CNN model which surpasses ResNet-50 in terms of classification accuracy on the given dataset.
